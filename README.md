@@ -62,3 +62,57 @@ Link customer orders to material requirements, stock availability and fulfillmen
 |order_status_log|status_id(PK), order_id(FK), timestamp, status_note|
 
 ---
+
+## 🚵🏼‍♀️ Case study
+### Assumptions
+- For BOM explosion, only one level BOMs are used (your schema does not model recursive, multi-level child BOMs, but the query is written in a way that could expand for nested BOMs if added)
+- For shortages, a simple reorder point is used (assumed or hardcoded per material)
+- Delivery dates and order stages are based on your provided data
+
+### 1. Generate BOM explosion
+Recursively list all materials needed for a given product and quantity
+
+### 2. Calculate material shortages
+Cross compare BOM(material needs) vs. inventory; trigger purchase orders when below reorder point
+
+### 3. Supplier Performance Dashboard
+Average daily time, rating, and PO fulfillment status
+
+### 4. Order Fulfillment pipeline
+Show each order's production/completion stage, material readiness, and estimated ship date
+
+---
+
+## 🤹🏼 SQL Queries
+- SELECT()
+- FROM()
+- WHERE()
+- JOIN()
+- LEFT JOIN()
+- AS()
+- WITH RECURSIVE()
+- NOT NULL()
+- PRIMARY KEY()
+- FOREIGN KEY()
+- REFERENCES()
+- CASE()
+- END()
+- DATE()
+- TEXT()
+- INSERT INTO()
+- VALUES()
+- GROUP BY()
+- ON()
+- DESC()
+- AUTOINCREMENT()
+- CREATE()
+
+---
+
+## 🧖🏼 Requirements
+- DBeaver application
+- Fundamentals of Database Management Systems
+
+---
+
+*"The inventory goes down the elevator every night" - Fairfax cone*
