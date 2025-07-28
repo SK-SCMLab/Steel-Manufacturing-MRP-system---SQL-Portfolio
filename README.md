@@ -31,3 +31,34 @@ Track raw material, work-in-progress, and finished goods inventory in real-time
 Link customer orders to material requirements, stock availability and fulfillment pipeline
 
 ---
+
+## 🏊🏼 Database schema design
+### 1. Bill of Materials
+|*Table*|*Key Fields*|
+|-------|------------|
+|products|product_id(PK), product_name, description|
+|bom|bom_id(PK), product_id(FK), assembly_level|
+|bom_items|bom_item_id(PK), bom_id(FK), material_id(FK), qty|
+|materials|material_id(PK), material_name, unit|
+
+### 2. Supplier & Procurement
+|*Table*|*Key fields*|
+|-------|------------|
+|suppliers|supplier_id(PK), name, contact_info, rating|
+|purchase_orders|po_id(PK), supplier_id(FK), order_date, status|
+|purchase_order_items|po_item_id(PK), po_id(FK), material_id(FK), qty, price, delivery_date|
+
+### 3. Inventory
+|*Table*|*Key fields*|
+|-------|------------|
+|inventory|inventory_id(PK), material_id(FK), location, qty_on_hand|
+|inventory_movements|movement_id(PK), inventory_id(FK), type(IN/OUT), qty, ref_type, ref_id, date|
+
+### 4. Orders & Status
+|*Table*|*Key fields*|
+|-------|------------|
+|customer_orders|order_id(PK), customer_name, order_date, status|
+|customer_order_items|order_item_id(PK), order_id(FK), product_id(FK), qty|
+|order_status_log|status_id(PK), order_id(FK), timestamp, status_note|
+
+---
